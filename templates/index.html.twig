@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block body %}
+    <h3>All the users and groups to be showed here (table)</h3>
+    <h3>Ability to add new users and groups</h3>
+
+    <ol>
+        {% for user in users %}
+
+            <li>{{user}}</li>
+
+        {% endfor %}
+    </ol>
+
+    <ol>
+        {% for group in groups %}
+
+        <li>{{group}}</li>
+
+        {% endfor %}
+    </ol>
+{% endblock %}
