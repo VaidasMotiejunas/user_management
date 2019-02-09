@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class UserController
 {
     /**
-     * @Route("/user/add")
+     * @Route("/user/add", name="user_add")
      */
     public function add()
     {
@@ -16,7 +16,7 @@ class UserController
     }
 
     /**
-     * @Route("/user/{id}")
+     * @Route("/user/{id}", name="user_show")
      */
     public function show($id)
     {
@@ -24,7 +24,7 @@ class UserController
     }
 
     /**
-     * @Route("/user/delete/{id}")
+     * @Route("/user/delete/{id}", name="user_delete")
      */
     public function delete($id)
     {
@@ -32,7 +32,7 @@ class UserController
     }
 
     /**
-     * @Route("/user/update/{id}")
+     * @Route("/user/update/{id}", name="user_update")
      */
     public function update($id)
     {

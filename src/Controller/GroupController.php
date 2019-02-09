@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class GroupController
 {
     /**
-     * @Route("/group/add")
+     * @Route("/group/add", name="group_add")
      */
     public function add()
     {
@@ -16,7 +16,7 @@ class GroupController
     }
 
     /**
-     * @Route("/group/{id}")
+     * @Route("/group/{id}", name="group_show")
      */
     public function show($id)
     {
@@ -24,7 +24,7 @@ class GroupController
     }
 
     /**
-     * @Route("/group/delete/{id}")
+     * @Route("/group/delete/{id}", name="group_delete")
      */
     public function delete($id)
     {
@@ -33,7 +33,7 @@ class GroupController
     }
 
     /**
-     * @Route("/group/update/{id}")
+     * @Route("/group/update/{id}", name="group_update")
      */
     public function update($id)
     {
