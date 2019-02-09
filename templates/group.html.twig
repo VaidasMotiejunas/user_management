@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block body %}
+
+<table>
+    <thead>
+        <th>name</th>
+        <th>users</th>
+    </thead>
+    <tbody>
+        <td>{{group.name}}</td>
+        <td>
+        {% for user in group.users %}
+            {{user.name}}
+        {% endfor %}
+        </td>
+    </tbody>
+</table>
+
+{% endblock %}

@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Entity\Group;
 
-class GroupController
+class GroupController extends AbstractController
 {
     /**
      * @Route("/group/add", name="group_add")
@@ -17,11 +19,17 @@ class GroupController
     }
 
     /**
+     * Fetches a group by provided id, then renders a view
      * @Route("/group/{id}", name="group_show")
      */
     public function show($id)
     {
-        return new Response('group:'.$id.' shows all users in a particular group');
+        $groupRep = $this->getDoctrine()->getRepository(Group::class);
+        $group = $groupRep->find($id);
+        
+        return $this->render('group.html.twig', [
+            'group' => $group
+        ]);
     }
 
     /**

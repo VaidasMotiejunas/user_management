@@ -4,6 +4,7 @@
 
 {% block body %}
     <h3>TODO Ability to add new users and groups</h3>
+    {{form(userForm)}}
 
 <h3>All users</h3>
 <table>
@@ -14,7 +15,7 @@
     <tbody>
         {% for user in users %}
         <tr>
-            <td>{{user.name}}</td>
+            <td><a href="{{path('user_show', {'id': user.id })}}">{{user.name}}</a></td>
             <td>
             {% for group in user.groups %}
                 {{group.name}}
@@ -34,7 +35,7 @@
     <tbody>
         {% for group in groups %}
         <tr>
-            <td>{{group.name}}</td>
+            <td><a href="{{path('group_show', {'id': group.id})}}">{{group.name}}</a></td>
             <td>
             {% for user in group.users %}
                 {{user.name}}

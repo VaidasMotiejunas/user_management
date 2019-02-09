@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Entity\User;
 
-class UserController
+class UserController extends AbstractController
 {
     /**
      * @Route("/user/add", name="user_add")
@@ -17,11 +19,17 @@ class UserController
     }
 
     /**
+     * Fetches a user by provided id, then renders a view
      * @Route("/user/{id}", name="user_show")
      */
     public function show($id)
     {
-        return new Response('user:'.$id.' name, groups it belongs to and a form to change data');
+        $userRep = $this->getDoctrine()->getRepository(User::class);
+        $user = $userRep->find($id);
+        
+        return $this->render('user.html.twig', [
+            'user' => $user
+        ]);
     }
 
     /**
