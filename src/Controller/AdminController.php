@@ -3,32 +3,32 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Entity\Group;
+use App\Entity\User;
+
+/**
+ * Main page controller 
+ */
 class AdminController extends AbstractController
 {
     /**
+     * Fetches user and group collections and renders index page
      * @Route("/", name="index")
      */
     public function index() 
     {
-        // return new Response('The index page');
+        $userRep = $this->getDoctrine()->getRepository(User::class);
+        $groupRep = $this->getDoctrine()->getRepository(Group::class);
 
-        // hardcoded users and groups for demo
-        $groups = [
-            'taxi',
-            'bus',
-        ];
-        $users = [
-            'Mantis',
-            'Bandis',
-            'Kandis'
-        ];
+        $users = $userRep->findAll();
+        $groups = $groupRep->findAll();
+
         return $this->render('index.html.twig', [
             'users' => $users,
             'groups' => $groups
         ]);
     }
-
 }
