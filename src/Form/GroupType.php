@@ -11,20 +11,19 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\User;
 use App\Entity\Group;
 
-class UserType extends AbstractType
+class GroupType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('groups', EntityType::class ,[
-                'class' => Group::class,
-                'choice_label' => 'name',
-                'expanded' => false,
-                'multiple' => true,
-                'label' => 'Select group(s) you want to add'
-            ])
+            // ->add('users', EntityType::class ,[
+            //     'class' => User::class,
+            //     'choice_label' => 'name',
+            //     'expanded' => false,
+            //     'multiple' => true
+            // ])
             ->add('save', SubmitType::class);
     }
 
@@ -34,7 +33,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Group::class,
         ]);
     }
 

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block body %}
+
+<h4>Editing group: {{group.name}}</h4>
+<table>
+    <thead>
+        <th>users</th>
+        <th>actions</th>
+    </thead>
+    <tbody>
+            {% for user in group.users %}
+        <tr>
+            <td>
+                {{user.name}}
+            </td>
+            <td>
+                <a href="{{path('group_remove_user', {'groupId': group.id, 'userId': user.id})}}">delete</a>
+            </td>
+        </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+{{form(form)}}
+
+{% endblock %}

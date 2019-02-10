@@ -3,14 +3,22 @@
 {% block title %}Admin panel{% endblock %}
 
 {% block body %}
-    <h3>TODO Ability to add new users and groups</h3>
-    {{form(userForm)}}
+
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<h3><a href="{{path('user_add')}}">Add new user</a></h3>
+<h3><a href="{{path('group_add')}}">Add new group</a></h3>
 
 <h3>All users</h3>
 <table>
     <thead>
         <th>name</th>
         <th>groups</th>
+        <th>actions</th>
     </thead>
     <tbody>
         {% for user in users %}
@@ -20,6 +28,10 @@
             {% for group in user.groups %}
                 {{group.name}}
             {% endfor %}
+            </td>
+            <td>
+                <a href="{{path('user_delete', {'id': user.id})}}">delete</a>
+                <a href="{{path('user_update', {'id': user.id})}}">edit</a>
             </td>
         </tr>
         {% endfor %}
@@ -31,6 +43,7 @@
     <thead>
         <th>name</th>
         <th>users</th>
+        <th>actions</th>
     </thead>
     <tbody>
         {% for group in groups %}
@@ -40,6 +53,10 @@
             {% for user in group.users %}
                 {{user.name}}
             {% endfor %}
+            </td>
+            <td>
+                <a href="{{path('group_delete', {'id': group.id})}}">delete</a>
+                <a href="{{path('group_update', {'id': group.id})}}">edit</a>
             </td>
         </tr>
         {% endfor %}
