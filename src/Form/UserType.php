@@ -23,7 +23,8 @@ class UserType extends AbstractType
                 'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => true,
-                'label' => 'Select group(s) you want to add'
+                'label' => 'Select group(s) you want to add',
+                'required' => false
             ])
             ->add('save', SubmitType::class);
     }
