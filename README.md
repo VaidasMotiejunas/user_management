@@ -4,6 +4,7 @@ User management system
 ## TODO
 ### Auth layer
 Current User Enityty should be renamed
+
 Implement and configure security
 ```
 composer require symfony/security-bundle
